@@ -1,7 +1,7 @@
 <?php
 Route::get('/', function () {
     return view('home');
-   //return "ambientes";
+  
 });
 
 Route::post('/form','ambientesController@show');
