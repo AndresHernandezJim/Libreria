@@ -4,7 +4,7 @@ Route::get('/', function () {
   
 });
 
-Route::post('/form','ambientesController@show');
+Route::post('/form','ambientesController@store');
 
 //controladores          //nombredelcontrolador@nombredelprocedim
 Route::get('/controller','ambientesController@index');
