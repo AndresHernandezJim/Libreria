@@ -1,10 +1,13 @@
 <?php
 Route::get('/', function () {
-    return view('home');
+    return view('website/Index');
   
 });
+Route::get('/tienda',function(){
 
-Route::post('/form','ambientesController@store');
+});
+
+//Route::post('/form','ambientesController@store');
 
 //controladores          //nombredelcontrolador@nombredelprocedim
 Route::get('/controller','ambientesController@index');

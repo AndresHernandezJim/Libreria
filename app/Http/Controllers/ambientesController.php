@@ -27,5 +27,6 @@ class ambientesController extends Controller
     			'telefono'=>$request->telefono
     		]);
     	return $request->all();
+    	//DB(usuario);
     }
 }

@@ -1,0 +1,46 @@
+.button-collapse, .brand-logo{
+	/*margin-left: 20px;*/
+}
+
+/*
+	Selectores css3
+	clases "."
+	id "#"
+	etiquetas "tag"
+
+*/
+#slider-libreria, #section2{
+	margin-top: 30px;
+}
+
+
+p{
+	border: 1px solid;
+	margin-top: 50px;
+	padding-top: 50px;
+}
+/*color del boton activo*/
+
+.slider .indicators .indicator-item.active {
+  background-color: #ff6f00;
+}
+
+/*propiedades del boton inactivo*/
+.slider .indicators .indicator-item {
+  background-color: #ff6f00;
+  border: 2px solid #ff6f00;
+ }
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .main {
+    flex: 1 0 auto;
+  }
+
+  .btn-social{
+  	margin-left: 20px;
+  	font-size: 30px;
+  }

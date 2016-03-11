@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title align="center">Librería</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css-boot/bootstrap.min.css">
 	
 </head>
 <body>
