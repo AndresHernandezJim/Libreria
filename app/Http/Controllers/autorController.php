@@ -36,11 +36,11 @@ class autorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
        $autor=\DB::table('Autor')->insert([
                 'Nombre'=>$request->Nombre
             ]);
-       return back()->with('exito',true); 
+       return back();
     }
 
     /**

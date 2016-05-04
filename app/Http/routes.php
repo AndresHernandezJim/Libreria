@@ -46,19 +46,25 @@
 		get('/administrador/libros/create',function(){
 			return view('admuser/libros/create');
 		});
-		get('/administrador/regiIdioma',function(){
-			return view('admuser/libros/idioma');
-		});
-		get('/administrador/regEditorial',function(){
-			return view('admuser/libros/editorial');
-		});
-		get('/administrador/regAutor',function(){
-			return view('admuser/libros/autor');
-		});
+		/*
 		post('/administrador/idioma','idiomaController@store');
 		post('/administrador/RegistroAutor','autorController@store');
 		post('/administrador/registroEdit','editorialController@store');
-		post('/administrador/libros/guardar','LibrosController@store');
+		post('/administrador/libros/guardar','LibrosController@store');*/
+		 /*post('/administrador/libros/autor',function(){
+	    	return App\autor::create(Request::all());
+	    });*/
+	    post('/administrador/libros/autor','autorController@store');
+	    post('/administrador/libros/editorial',function(){
+	    	return App\editorial::create(Request::all());
+	    });
+	    post('/administrador/libros/idioma',function(){
+	    	return App\idioma::create(Request::all());
+	    });
+	    get('/administrador/libros/getAutores', function() {
+	    	return \App\autor::all();
+	    });
+	   	
 	});
 
 /*

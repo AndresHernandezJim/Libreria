@@ -56,10 +56,11 @@
             </div>
         </div>
   	</footer>
-	<script src="/js/jquery-2.2.1.min.js"></script>
-  <script src="/js/vue.js"></script>
-	<script src="/js/materialize.min.js"></script>
-	<script src="/js/app.js"></script>
+  <script src="/js/jquery-2.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.16/vue-resource.min.js"></script>
+  <script src="/js/materialize.min.js"></script>
+  <script src="/js/app.js"></script>
   @yield('scripts')
 </body>
 </html>
