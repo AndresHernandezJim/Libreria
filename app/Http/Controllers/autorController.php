@@ -35,14 +35,11 @@ class autorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    { 
-       if($this->validate($request,'Nombre' => 'required|max:3')){
-            
-
-       }
-        return App\autor::create($request.nombre);
-       
+     public function storeAutor(Request $request){
+            $this->validate($request, [
+            'nombre' => 'required|min:4'
+        ]);
+        return autor::create($request->all());
     }
 
     /**
@@ -85,8 +82,13 @@ class autorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+   public function deleteAutor(Request $request)
+    {   
+        $delete = \DB::table('Autor')
+            ->where('idAutor', $request->input('id_Autor'))
+            ->delete();
+            //->toSql();
+        if($deletea            return $delete;
+        }
+    }   
 }

@@ -9,4 +9,5 @@ class idioma extends Model
      protected $table = 'Idioma';
      protected $primaryKey="id_Idioma";
     protected $fillable = ['id_Idioma','nombre'];
+    public $timestamps=false;
 }

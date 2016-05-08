@@ -35,15 +35,16 @@ class editorialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //dd($request->all());
-         $editorial=\DB::table('editorial')->insert([
-                'nombre'=>$request->nombre,
-                'telefono'=>""
-            ]);
-       
+
+
+    public function storeEditorial(Request $request){
+            $this->validate($request, [
+            'nombre' => 'required|min:3',
+            'telefono' => 'required|min:7'
+        ]);
+        return Editorial::create($request->all());
     }
+   
 
     /**
      * Display the specified resource.
@@ -85,8 +86,13 @@ class editorialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+      public function deleteEditorial(Request $request)
+    {   
+        $delete = \DB::table('editorial')
+            ->where('id_editorial', $request->input('id_editorial'))
+            ->delete();
+        if($delete){
+            return $delete;
+        }
+    } 
 }

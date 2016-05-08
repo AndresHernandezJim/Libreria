@@ -9,10 +9,11 @@ use App\Http\Controllers\Controller;
 
 class idiomaController extends Controller
 {
-    public function store(Request $request)
-    {  
-        $this->validate($request,['nombre'=>'required|min:3']);
-        return idioma::create($request->all());
+      public function storeIdioma(Request $request){
+            $this->validate($request, [
+            'nombre' => 'required|min:3'
+        ]);
+        return Idioma::create($request->all());
     }
 
  
@@ -30,14 +31,14 @@ class idiomaController extends Controller
     {
         //
     }
-
-    public function destroy($id)
-    {
-        $delete = \DB::table('Idioma')
-            ->where('id_Idioma', $request->id_Idioma)
+    public function deleteIdioma(Request $request)
+    {   
+        $delete = \DB::table('idioma')
+            ->where('id_idioma', $request->input('id_Idioma'))
             ->delete();
+            //->toSql();
         if($delete){
             return $delete;
         }
-    }
+    } 
 }

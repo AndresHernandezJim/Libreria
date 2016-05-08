@@ -46,21 +46,18 @@
 		get('/administrador/libros/create',function(){
 			return view('admuser/libros/create');
 		});
-		/*
-		post('/administrador/idioma','idiomaController@store');
-		post('/administrador/RegistroAutor','autorController@store');
-		post('/administrador/registroEdit','editorialController@store');
-		post('/administrador/libros/guardar','LibrosController@store');*/
-		 /*post('/administrador/libros/autor',function(){
-	    	return App\autor::create(Request::all());
-	    });*/
-	    post('/administrador/libros/autor','autorController@store');
-	    post('/administrador/libros/editorial','editorialController@store');
-	    post('/administrador/libros/idioma','idiomaController@store');
-	    get('/administrador/libros/getAutores', function() {
-	    	return \App\autor::all();
-	    });
-	   	
+		/*idiomas*/
+		get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
+		post('/administrador/libros/create/storeIdioma', 'idomaController@storeIdioma');
+		post('/administrador/libros/create/deleteIdioma', 'idomaController@deleteIdioma');
+		/*editoriales*/
+		get('/administrador/libros/create/editoriales', 'LibrosController@editoriales');
+		post('/administrador/libros/create/storeEditorial','editorialController@storeEditorial');
+		post('/administrador/libros/create/deleteEditorial','editorialController@deleteEditorial');
+		/*autores*/
+		get('/administrador/libros/create/autores', 'LibrosController@autores');
+		post('/administrador/libros/create/storeAutor', 'autorController@storeAutor');
+		post('/administrador/libros/create/deleteAutor', 'autorController@deleteAutor');
 	});
 
 /*
