@@ -40,9 +40,9 @@ class editorialController extends Controller
         //dd($request->all());
          $editorial=\DB::table('editorial')->insert([
                 'nombre'=>$request->nombre,
-                'telefono'=>$request->telefono
+                'telefono'=>""
             ]);
-       return back()->with('exito',true); 
+       
     }
 
     /**

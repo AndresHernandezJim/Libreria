@@ -37,10 +37,12 @@ class autorController extends Controller
      */
     public function store(Request $request)
     { 
-       $autor=\DB::table('Autor')->insert([
-                'Nombre'=>$request->Nombre
-            ]);
-       return back();
+       if($this->validate($request,'Nombre' => 'required|max:3')){
+            
+
+       }
+        return App\autor::create($request.nombre);
+       
     }
 
     /**

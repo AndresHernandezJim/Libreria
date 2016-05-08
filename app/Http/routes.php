@@ -55,12 +55,8 @@
 	    	return App\autor::create(Request::all());
 	    });*/
 	    post('/administrador/libros/autor','autorController@store');
-	    post('/administrador/libros/editorial',function(){
-	    	return App\editorial::create(Request::all());
-	    });
-	    post('/administrador/libros/idioma',function(){
-	    	return App\idioma::create(Request::all());
-	    });
+	    post('/administrador/libros/editorial','editorialController@store');
+	    post('/administrador/libros/idioma','idiomaController@store');
 	    get('/administrador/libros/getAutores', function() {
 	    	return \App\autor::all();
 	    });

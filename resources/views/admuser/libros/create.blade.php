@@ -116,62 +116,32 @@
 	<div class="col s12 l3">
 		<div class="card-panel">
 			<center>
-				<div class="card-panel form-idioma">
-					<form action="/administrador/libros/idioma'" method="POST">
-			 					{{csrf_field()}}
-			 					<div class="row">
-			 						<div class="input-field col s12">
-			        					<input id="nombre" type="text" class="validate" name="nombre">
-			        					<label for="nombre">Idioma</label>
-        							</div>
-			 					</div>
-			 					<div class="row">
-			 						<div class="col s12" v-show="newidioma.nombre" >
-			 							<a href="" class="col s12 waves-effect waves-light btn">registrar</a>
-										
-									</div>
-			 					</div>
-			 		</form>
+				<div class="card-panel ">
+					<div class="row">
+			 			<div class="input-field col s12">
+			        		<input id="nombre" type="text" class="validate" name="nombre"v-model="newidioma.nombre" v-on:keyup.enter="idioma">
+			        		<label for="nombre">Idioma</label>
+        				</div>
+			 		</div>
 				</div>
 				<div class="card-panel">
-					<form action="/administrador/libros/editorial" method="POST" @submit.prevent="editor">
-			 					{{csrf_field()}}
-			 					<div class="row">
-			 						<div class="input-field col s12">
-			        					<input id="nombre" type="text" class="validate" name="nombre">
-			        					<label for="nombre">Editorial</label>
-        							</div>
-        							<div class="input-field col s12">
-			        					<input id="nombre" type="text" class="validate" name="nombre">
-			        					<label for="nombre">Telefono</label>
-        							</div>
-			 					</div>
-			 				
-			 					<div class="row">
-			 						<div class="col s12" v-show="newedit.nombre" >
-										<button type="submit" class=" col s12 waves-effect waves-light btn right cyan darken-3" >Registrar</button>
-									</div>
-			 					</div>
-			 		</form>
+					<div class="row">
+			 			<div class="input-field col s12">
+			        		<input id="nombre" type="text" class="validate" name="nombreedit" v-model="newedit.nombre" v-on:keyup.enter="editor">
+			        			<label for="nombre">Editorial</label>
+        				</div>
+			 		</div>
 				</div>
 				<div class="card-panel">
-					
-			 					
-			 					<div class="row">
-			 						<div class="input-field col s12">
-			        					<input id="nombre" type="text" class="validate" v-model="newautor.Nombre" v-on:keyup.enter="autor">
-			        					<label for="nombre">Autor</label>
-        							</div>
-			 					</div>
-			 					<div class="row">
-			 						<div class="col s12" v-show="newautor.nombre">
-										<button  class=" col s12 waves-effect waves-light btn right cyan darken-3" >Registrar</button>
-									</div>
-			 					</div>
-			 					<ul v-for="autor in listautores">
-			 						<li>@{{autor.Nombre}}</li>
-			 					</ul>
-					
+			 		<div class="row">
+			 			<div class="input-field col s12">
+			        		<input id="nombre" type="text" class="validate" v-model="newautor.Nombre" v-on:keyup.enter="autor">
+			        		<label for="nombre">Autor</label>
+        				</div>
+			 		</div>
+			 		<ul v-for="autor in listautores">
+			 			<li>@{{autor.Nombre}}</li>
+			 		</ul>
 				</div>
 			</center>
 		</div>
@@ -198,11 +168,11 @@
 					Nombre:'',
 				},
 			newedit:{
-					nombre:"",
-					telefono:"",
+					nombre:'',
+					telefono:'',
 				},
 			newidioma:{
-					nombre:"",
+					nombreedit:'',
 			},
 			listautores:[]
 		},
@@ -213,25 +183,25 @@
 		},
 		methods:{
 			idioma: function(e){
-				e.preventDefault();
-				var idioma=this.newidioma;
-				this.$http.post('/administrador/libros/idioma');
-				this.newidioma={};
+				this.$http.post('/administrador/libros/idioma',{'nombre':this.newidioma});
+				this.newidioma={nombre:''};
 				Materialize.toast('Idioma agregado',3000,'rounded')
-
+				reload();
 			},
-			editor: function(e){
-				e.preventDefault();
-				var nombre = this.newedito;
-				this.$http.post('/administrador/libros/editorial',nombre);
-				this.newedito = {nombre: '',telefono:''};
+			editor: function(){
+				this.$http.post('/administrador/libros/editorial',{'nombre':this.newautor});
+				this.newedito = {nombre: ''};
 				Materialize.toast('Editorial agregada', 3000, 'rounded');
 			},
 
 			autor: function(){
-				this.$http.post('/administrador/libros/autor',{'Nombre':this.newautor});
-				this.newautor = {nombre: ''};
-				Materialize.toast('Autor agregado', 3000, 'rounded');
+				this.$http.post('/administrador/libros/autor',{'Nombre':this.newautor}).then(function(response){
+					this.newautor.Nombre='';
+					Materialize.toast('Autor agregado', 3000, 'rounded');
+				},function(error){
+					Materialize.toast('No fue posible registrar al autor',3000,'rounded');
+				});
+				
 			},
 			autores: function() {
 				
@@ -243,7 +213,22 @@
 			}
 		},
 	});
+	/*
+		getidiomas: function(){
+			this.$htto.get('ruta').then(function(){
+				this.$set('idioma',response.data);
+			});
+		}
 
+		storeidioma: function(){
+			this.$http.post('ruta',parametroaenviar).then(function(response){
+	
+			},funtion(error){
+	
+			}),
+		}
+
+	*/
 </script>
 
 @stop
