@@ -48,8 +48,8 @@
 		});
 		/*idiomas*/
 		get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
-		post('/administrador/libros/create/storeIdioma', 'idomaController@storeIdioma');
-		post('/administrador/libros/create/deleteIdioma', 'idomaController@deleteIdioma');
+		post('/administrador/libros/create/storeIdioma', 'idiomaController@storeIdioma');
+		post('/administrador/libros/create/deleteIdioma', 'idiomaController@deleteIdioma');
 		/*editoriales*/
 		get('/administrador/libros/create/editoriales', 'LibrosController@editoriales');
 		post('/administrador/libros/create/storeEditorial','editorialController@storeEditorial');
@@ -57,7 +57,7 @@
 		/*autores*/
 		get('/administrador/libros/create/autores', 'LibrosController@autores');
 		post('/administrador/libros/create/storeAutor', 'autorController@storeAutor');
-		post('/administrador/libros/create/deleteAutor', 'autorController@deleteAutor');
+		post('/administrador/libros/create/deleteAutor','autorController@deleteAutor');
 	});
 
 /*

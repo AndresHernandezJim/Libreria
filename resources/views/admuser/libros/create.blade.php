@@ -65,8 +65,8 @@
    							 <label>Editorial</label>
   						</div>
   						<div class="input-field col s6">
-   							<select v-for="idioma in idiomas">
-     							 <option value="" disabled selected>Selecciona el Idioma</option>
+   							<select v-model="selectidiomas" options="idiomas">
+     							 <option value="" desabled selected>Seleccione el idioma</option>
     						</select>
    							 <label>Idioma</label>
   						</div>
@@ -104,19 +104,18 @@
 			<div class="col s12 l3">
 				<div class="card-panel" v-if="carIdioma">
 			    	<center>
-			    		<label>ESCRIBE EL IDIOMA</label> <br>
-			    		<label>Da enter para guardar</label>
+			    		<label>IDIOMA</label> <br>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12">
 				          	<input type="text" class="validate" v-model="newIdioma" v-on:keyup.enter="storeIdioma">
 				        </div>
 				    </div>
+				    <a href="#!" v-on:click="agregarIdioma"> Cerrar</a>
 		        </div>
 		        <div class="card-panel" v-if="carEditorial">
 			    	<center>
-			    		<label>ESCRIBE EL EDITORIAL</label> <br>
-			    		<label>Da enter para guardar</label>
+			    		<label>EDITORIAL</label> <br>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12"> 
@@ -128,17 +127,18 @@
 				          	<label>Telefono</label><br>
 				        </div> 
 				    </div>
+				     <a href="#!" v-on:click="agregarEditorial"> Cerrar</a>
 				</div>
 			    <div class="card-panel" v-if="carAutor">
 			    	<center>
-			    		<label>ESCRIBE EL NOMBRE DEL AUTOR</label> <br>
-			    		<label>Da enter para guardar</label>
+			    		<label>AUTOR</label> <br>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12">
 				          	<input type="text" class="validate" v-model="newAutor" v-on:keyup.enter="storeAutor">
 				        </div>
 				    </div>
+				     <a href="#!" v-on:click="agregarAutor"> Cerrar</a>
 		        </div>
 		    
 				<ul class="collapsible" data-collapsible="accordion">
@@ -147,46 +147,45 @@
 				      		<b class="left">IDIOMAS</b>
 				      	</div>
 				      	<div class="collapsible-body">
-				      		<p class="agregaIdioma">
 				      			<center>
 						      		<a href="#!" class="agregaIdioma" v-on:click="agregarIdioma">Agregar idioma</a>
 						      	</center>
-				      		</p>
-				      		<p class="itemsIdioma" v-for="idioma in idiomas">
+						      	<br>
+				      		<ul class="itemsIdioma" v-for="idioma in idiomas" font size="1">
 			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="idioma" />
-					      		<label for="test@{{$index}}">@{{idioma.nombre}}</label>
-					      		<button v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</button>
-						    </p>
+					      		<label  for="test@{{$index}}">@{{idioma.nombre}}&nbsp</label>
+					      		<a href="#!" v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</a>
+						    </ul>
 				      	</div>
 				    </li>
 				    <li>
 				      	<div class="collapsible-header"><i class="fa fa-users" aria-hidden="true"></i><b>AUTORES</b></div>
 				      	<div class="collapsible-body">
-				      		<p class="agregaIdioma">
+				      		
 				      			<center>
 						      		<a href="#!" class="agregaIdioma" v-on:click="agregarAutor">Agregar Autor</a>
 						      	</center>
-				      		</p>
-				      		<p class="itemsIdioma" v-for="autor in autores">
+				   				<br>
+				      		<ul class="itemsIdioma" v-for="autor in autores">
 			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="autor" />
-					      		<label for="test@{{$index}}">@{{autor.Nombre}}</label>
-					      		<button v-on:click="removeAutor(autor)" class="remover-idioma">&#10007;</button>
-						    </p>
+					      		<label for="test@{{$index}}">@{{autor.Nombre}}&nbsp</label>
+					      		<a v-on:click="removeAutor(autor)" class="remover-idioma">&#10007;</a>
+						    </ul>
 				      	</div>
 				    </li>
 				     <li>
 				      	<div class="collapsible-header"><i class="fa fa-book" aria-hidden="true"></i><b>EDITORIALES</b></div>
 				      	<div class="collapsible-body">
-				      		<p class="agregaIdioma">
+				      		
 				      			<center>
 						      		<a href="#!" class="agregaIdioma" v-on:click="agregarEditorial">Agregar editorial</a>
 						      	</center>
-				      		</p>
-				      		<p class="itemsIdioma" v-for="editorial in editoriales">
+				      			<br>
+				      		<ul class="itemsIdioma" v-for="editorial in editoriales">
 			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="editorial" />
-					      		<label for="test@{{$index}}">@{{editorial.nombre}}</label>
-					      		<button v-on:click="removeEditorial(editorial)" class="remover-idioma">&#10007;</button>
-						    </p>
+					      		<label for="test@{{$index}}">@{{editorial.nombre}}&nbsp</label>
+					      		<a v-on:click="removeEditorial(editorial)" class="remover-idioma">&#10007;</a>
+						    </ul>
 				      	</div>
 				    </li>
 				</ul>

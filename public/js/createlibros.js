@@ -7,6 +7,7 @@ new Vue({
 		newIdioma: "",
 		idiomas: [],
 
+
 		carEditorial: false,
 		newEditorial: "",
 		newTelefono: "",
@@ -67,7 +68,7 @@ new Vue({
 			//peticion AJAX
 			this.$http.post('/administrador/libros/create/storeEditorial', {'nombre': this.newEditorial, 'telefono': this.newTelefono}).then(function(response){
 				this.editoriales.push(response.data);
-				Materialize.toast('Idioma agregado correctamente', 3500)
+				Materialize.toast('Editorial agregado correctamente', 3500)
 				this.newEditorial = "";
 				this.newTelefono= "";
 			},function(error) {
@@ -78,7 +79,7 @@ new Vue({
 		},
 		storeAutor: function(){
 			//peticion AJAX
-			this.$http.post('/administrador/libros/create/storeAutor', {'nombre': this.newAutor}).then(function(response){
+			this.$http.post('/administrador/libros/create/storeAutor', {'Nombre': this.newAutor}).then(function(response){
 				this.autores.push(response.data);
 				Materialize.toast('Autor agregado correctamente', 3500)
 				this.newAutor = "";
@@ -89,7 +90,7 @@ new Vue({
 		},
 		removeIdioma: function(idioma){
 			console.log(idioma);
-			this.$http.post('/administrador/libros/create/deleteIdioma', {'id_Idioma': idioma.id_idioma}).then(function(response){
+			this.$http.post('/administrador/libros/create/deleteIdioma', {'id_idioma': idioma.id_idioma}).then(function(response){
 				console.log(response.data);
 				this.idiomas.$remove(idioma);
 				Materialize.toast('El idioma ha sido borrado', 3500)
@@ -98,10 +99,10 @@ new Vue({
 
 		removeEditorial: function(editorial){
 			console.log(editorial);
-			this.$http.post('/administrador/libros/create/deleteEditorial', {'id_Editorial': editorial.id_editorial}).then(function(response){
+			this.$http.post('/administrador/libros/create/deleteEditorial', {'id_editorial': editorial.id_editorial}).then(function(response){
 				console.log(response.data);
 				this.editoriales.$remove(editorial);
-				Materialize.toast('El idioma ha sido borrado', 3500)
+				Materialize.toast('El editorial ha sido borrado', 3500)
 			});
 		},
 		removeAutor: function(autor){

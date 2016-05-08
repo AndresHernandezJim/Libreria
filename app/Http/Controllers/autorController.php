@@ -37,7 +37,7 @@ class autorController extends Controller
      */
      public function storeAutor(Request $request){
             $this->validate($request, [
-            'nombre' => 'required|min:4'
+            'Nombre' => 'required|min:4'
         ]);
         return autor::create($request->all());
     }
@@ -88,7 +88,8 @@ class autorController extends Controller
             ->where('idAutor', $request->input('id_Autor'))
             ->delete();
             //->toSql();
-        if($deletea            return $delete;
+        if($delete){
+            return $delete;
         }
     }   
 }

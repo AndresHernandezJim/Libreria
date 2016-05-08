@@ -13,7 +13,7 @@ class idiomaController extends Controller
             $this->validate($request, [
             'nombre' => 'required|min:3'
         ]);
-        return Idioma::create($request->all());
+        return idioma::create($request->all());
     }
 
  
@@ -33,8 +33,8 @@ class idiomaController extends Controller
     }
     public function deleteIdioma(Request $request)
     {   
-        $delete = \DB::table('idioma')
-            ->where('id_idioma', $request->input('id_Idioma'))
+        $delete = \DB::table('Idioma')
+            ->where('id_idioma', $request->input('id_idioma'))
             ->delete();
             //->toSql();
         if($delete){
