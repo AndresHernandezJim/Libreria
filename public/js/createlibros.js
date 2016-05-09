@@ -6,25 +6,35 @@ new Vue({
 		carIdioma: false,
 		newIdioma: "",
 		idiomas: [],
-
+		listaidiomas:[],
 
 		carEditorial: false,
 		newEditorial: "",
 		newTelefono: "",
 		editoriales: [],
+		listaEditoriales:[],
 
 		carAutor: false,
 		newAutor: "",
 		autores: [],
+		listaautores:[],
 	},
 
-	//metodos
+	//acciones precargadas al inicio de la pagina
 	ready: function() {
 		this.getIdiomas();
 		this.getEditoriales();
 		this.getAutores();
-	},
+		this.llenarselect();
+	},	
+	//metodos
 	methods:{
+		llenarselect:function(){
+			this.listaEditoriales==this.editoriales;
+			this.listaautores==this.autores;
+			this.listaidiomas==this.idiomas;
+			console.log(this.listaEditoriales);
+		},
 		getIdiomas: function(){
 			this.$http.get('/administrador/libros/create/idiomas').then(function(response){
 				this.$set('idiomas', response.data);
@@ -93,7 +103,7 @@ new Vue({
 			this.$http.post('/administrador/libros/create/deleteIdioma', {'id_idioma': idioma.id_idioma}).then(function(response){
 				console.log(response.data);
 				this.idiomas.$remove(idioma);
-				Materialize.toast('El idioma ha sido borrado', 3500)
+				Materialize.toast('Se ha borrado el  Idioma', 3500)
 			});	
 		},
 
@@ -102,7 +112,7 @@ new Vue({
 			this.$http.post('/administrador/libros/create/deleteEditorial', {'id_editorial': editorial.id_editorial}).then(function(response){
 				console.log(response.data);
 				this.editoriales.$remove(editorial);
-				Materialize.toast('El editorial ha sido borrado', 3500)
+				Materialize.toast('Se ha borrado el Editorial', 3500)
 			});
 		},
 		removeAutor: function(autor){
@@ -110,9 +120,10 @@ new Vue({
 			this.$http.post('/administrador/libros/create/deleteAutor', {'id_Autor': autor.idAutor}).then(function(response){
 				console.log(response.data);
 				this.autores.$remove(autor);
-				Materialize.toast('El Autor ha sido borrado', 3500)
+				Materialize.toast('Se ha borrado el Autor ', 3500)
 			});	
-		}	
+		},
+
 	}
 });
 

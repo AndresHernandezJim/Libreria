@@ -45,7 +45,7 @@
 		get('/administrador/libros','LibrosController@index'); 
 		get('/administrador/libros/create',function(){
 			return view('admuser/libros/create');
-		});
+		}); 
 		/*idiomas*/
 		get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
 		post('/administrador/libros/create/storeIdioma', 'idiomaController@storeIdioma');

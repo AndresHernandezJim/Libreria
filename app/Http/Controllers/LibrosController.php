@@ -13,10 +13,10 @@ class LibrosController extends Controller
 {
   public function index()
     {
-        return view('admin.libros.index');
+        return view('/admuser/libros/index');
     }
     public function create(){
-      return view('admin.libros.create');
+      return view('/admuser/libros/create');
     }
     
     public function store(Requests $request){

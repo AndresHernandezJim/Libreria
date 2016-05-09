@@ -60,22 +60,25 @@
 					<div class="row">
 						<div class="input-field col s6">
    							<select>
-     							 <option value="" disabled selected>Selecciona el Editorial</option>
+     							  <option value="" disabled selected>Selecciona el Editorial</option>
+     							  <option v-for="editorial in editoriales" v-bind:value="editorial.id_editorial">@{{<editorial class="nombre"></editorial>}}</option>
     						</select>
    							 <label>Editorial</label>
   						</div>
   						<div class="input-field col s6">
-   							<select v-model="selectidiomas" options="idiomas">
-     							 <option value="" desabled selected>Seleccione el idioma</option>
-    						</select>
+   							 <select v-model="selected"	>
+   							 	<option value="" disabled selected>Seleccione el idioma</option>
+ 							 	<option v-for="idioma in idiomas" v-bind:value="idioma.id_idiomas">@{{idioma.nombre}}</option>
+
+							 </select>
    							 <label>Idioma</label>
   						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
-   							<select>
+   							<select v-model="selected1">
      							 <option value="" disabled selected>Selecciona el Autor</option>
-     							
+     							<option v-for="autor in autores" v-bind:value"autor.idAutor">@{{autor.Nombre}}</option>
     						</select>
    							 <label>Autor</label>
   						</div>
@@ -104,18 +107,20 @@
 			<div class="col s12 l3">
 				<div class="card-panel" v-if="carIdioma">
 			    	<center>
-			    		<label>IDIOMA</label> <br>
+			    		<label>ESCRIBE EL IDIOMA</label> <br>
+			    		<label>Da enter para guardar</label>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12">
 				          	<input type="text" class="validate" v-model="newIdioma" v-on:keyup.enter="storeIdioma">
 				        </div>
 				    </div>
-				    <a href="#!" v-on:click="agregarIdioma"> Cerrar</a>
+				     <a href="#!" v-on:click="agregarIdioma">Cerrar</a>
 		        </div>
 		        <div class="card-panel" v-if="carEditorial">
 			    	<center>
-			    		<label>EDITORIAL</label> <br>
+			    		<label>ESCRIBE EL EDITORIAL</label> <br>
+			    		<label>Da enter para guardar</label>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12"> 
@@ -126,19 +131,20 @@
 				          	<input type="text" class="validate" v-model="newTelefono" v-on:keyup.enter="storeEditorial"><br>
 				          	<label>Telefono</label><br>
 				        </div> 
+				        <a href="#!" v-on:click="agregarEditorial">Cerrar</a>
 				    </div>
-				     <a href="#!" v-on:click="agregarEditorial"> Cerrar</a>
 				</div>
 			    <div class="card-panel" v-if="carAutor">
 			    	<center>
-			    		<label>AUTOR</label> <br>
+			    		<label>ESCRIBE EL NOMBRE DEL AUTOR</label> <br>
+			    		<label>Da enter para guardar</label>
 			    	</center>
 			    	<div class="row">
 				        <div class="input-field col s12">
 				          	<input type="text" class="validate" v-model="newAutor" v-on:keyup.enter="storeAutor">
 				        </div>
 				    </div>
-				     <a href="#!" v-on:click="agregarAutor"> Cerrar</a>
+				     <a href="#!" v-on:click="agregarAutor">Cerrar</a>
 		        </div>
 		    
 				<ul class="collapsible" data-collapsible="accordion">
@@ -154,7 +160,7 @@
 				      		<ul class="itemsIdioma" v-for="idioma in idiomas" font size="1">
 			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="idioma" />
 					      		<label  for="test@{{$index}}">@{{idioma.nombre}}&nbsp</label>
-					      		<a href="#!" v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</a>
+					      		<a v-on:click="removeIdioma(idioma)" class="remover-idioma">&#10007;</a>
 						    </ul>
 				      	</div>
 				    </li>
@@ -167,8 +173,8 @@
 						      	</center>
 				   				<br>
 				      		<ul class="itemsIdioma" v-for="autor in autores">
-			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="autor" />
-					      		<label for="test@{{$index}}">@{{autor.Nombre}}&nbsp</label>
+			      				<input class="with-gap" type="checkbox" id="test2@{{$index}}" name="autor" />
+					      		<label for="test2@{{$index}}">@{{autor.Nombre}}&nbsp</label>
 					      		<a v-on:click="removeAutor(autor)" class="remover-idioma">&#10007;</a>
 						    </ul>
 				      	</div>
@@ -182,8 +188,8 @@
 						      	</center>
 				      			<br>
 				      		<ul class="itemsIdioma" v-for="editorial in editoriales">
-			      				<input class="with-gap" type="radio" id="test@{{$index}}" name="editorial" />
-					      		<label for="test@{{$index}}">@{{editorial.nombre}}&nbsp</label>
+			      				<input class="with-gap" type="radio" id="test3@{{$index}}" name="editorial" />
+					      		<label for="test3@{{$index}}">@{{editorial.nombre}}&nbsp</label>
 					      		<a v-on:click="removeEditorial(editorial)" class="remover-idioma">&#10007;</a>
 						    </ul>
 				      	</div>
