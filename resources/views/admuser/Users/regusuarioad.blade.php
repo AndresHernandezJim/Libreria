@@ -3,7 +3,7 @@
 	<div class="container">
     <div class="row">
         <div >
-            <a  href="administrador/panel" class="waves-effect waves-light btn rigth">Regresar</a>
+            <a  href="/usuarios" class="waves-effect waves-light btn rigth">Regresar</a>
         </div>
     </div>
     <div class="row">

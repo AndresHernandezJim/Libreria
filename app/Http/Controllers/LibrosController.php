@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\editorial;
 use App\idioma;
 use App\autor;
+use App\Helpers\Filesystem;
+use App\Repositorios\RepositoryLibro;
+
 class LibrosController extends Controller
 {
   public function index()
@@ -19,10 +22,19 @@ class LibrosController extends Controller
       return view('/admuser/libros/create');
     }
     
-    public function store(Requests $request){
-       $file = $request->file('image'); 
+    public function store(libroRequest $request){
+        //verificar que exista el archivo
+        $file = $request->file('image');
+         
         if ($request->hasFile('image')) {
-            dd($file);
+            //mandamos subir el archivo con el upload
+            $fileystem= Filesystem::upload($file);
+            if(!$fileystem){
+                return back()->with('error-file', true);
+            }
+            $insertar=RepositoryLibro::store($request,$fileystem);
+           
+
         }
         return back()->with('error-file', true);
     }

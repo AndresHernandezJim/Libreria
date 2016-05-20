@@ -10,7 +10,7 @@
 		return view('website/carrito');
 	});
 	/*get('/login',function(){
-		return view('website/login');
+		return view('website/login'); 
 	});*/
 	get('/ingresar','loginController@index');
 	get('/about',function(){
@@ -25,9 +25,7 @@
 	get('/otropago',function(){
 		return view('website/formaspago');
 	});
-	get('/regadmin',function(){
-		return view('admuser/regusuarioad');
-	});
+	
 	//post('/form','ambientesController@store');
 	//controladores          //nombredelcontrolador@nombredelprocedim
 	POST('/controller','ambientesController@store');	
@@ -46,10 +44,17 @@
 		get('/administrador/libros/create',function(){
 			return view('admuser/libros/create');
 		}); 
+		get('/administrador/Usuarios/registrar',function(){
+			return view('/admuser/Users/regusuarioad');
+		});
+		get('/administrador/usuarios/usuarios',function(){return view('admuser/Users/registrados');});
+		get('/usuarios',function(){return view('admuser/Users/panelusuarios');});
+		/*insersion de libros*/
+		post('/administrador/libros/registrar','LibrosController@store');
 		/*idiomas*/
 		get('/administrador/libros/create/idiomas', 'LibrosController@idiomas');
 		post('/administrador/libros/create/storeIdioma', 'idiomaController@storeIdioma');
-		post('/administrador/libros/create/deleteIdioma', 'idiomaController@deleteIdioma');
+		post('/administrador/libros/create/deleteIdioma', 'idiomaController@deleteIdioma'); 
 		/*editoriales*/
 		get('/administrador/libros/create/editoriales', 'LibrosController@editoriales');
 		post('/administrador/libros/create/storeEditorial','editorialController@storeEditorial');

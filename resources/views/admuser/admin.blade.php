@@ -50,7 +50,7 @@
     </a>
   </div>
   <div class="col s12 m6 l6">
-    <a href="/regadmin" class="item">
+    <a href="/usuarios" class="item">
       <div class="card-panel grey lighten-4">
         <div class="row">
           <div class="col s2">
