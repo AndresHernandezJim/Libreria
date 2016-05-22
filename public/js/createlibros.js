@@ -74,7 +74,7 @@ new Vue({
 		},
 		storeEditorial: function(){
 			//peticion AJAX
-			this.$http.post('/administrador/libros/create/storeEditorial', {'nombre': this.newEditorial, 'telefono': this.newTelefono}).then(function(response){
+			this.$http.post('/administrador/libros/create/storeEditorial', {'Nombre': this.newEditorial, 'telefono': this.newTelefono}).then(function(response){
 				this.editoriales.push(response.data);
 				Materialize.toast('Editorial agregado correctamente', 3500)
 				this.newEditorial = "";

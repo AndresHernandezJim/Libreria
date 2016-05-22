@@ -8,13 +8,13 @@
 
   <div class="row">
 
-      <div class="col l3" v-for='libro in libros'> 
+      <div class="col l2" v-for='libro in libros'> 
          <div class="card">
           <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="@{{libro.Imagen}}">
+              <img class="activator imglibro" src="@{{libro.Imagen}}">
           </div>
           <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">@{{libro.titulo}}<i class="material-icons right"></i></span>
+              <span class="card-title activator "><FONT FACE="arial" SIZE=2 COLOR=black>@{{libro.titulo}}</FONT><i class="material-icons right"></i></span>
               <p><a href="#">Agregar al carrito</a></p>
           </div>
           <div class="card-reveal">
