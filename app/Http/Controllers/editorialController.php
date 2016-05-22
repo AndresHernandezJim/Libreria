@@ -39,7 +39,7 @@ class editorialController extends Controller
 
     public function storeEditorial(Request $request){
             $this->validate($request, [
-            'nombre' => 'required|min:3',
+            'Nombre' => 'required|min:3',
             'telefono' => 'required|min:7'
         ]);
         return Editorial::create($request->all());

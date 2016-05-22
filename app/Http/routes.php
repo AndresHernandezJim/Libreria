@@ -37,6 +37,7 @@
 	POST('/controller2','ambientesController@store2');
 	get('administrador/panel','AdministradorController@index');
 	get('/users',function(){return App\User::all();});
+	get('/getlibros','LibrosController@show');
 	Route::group(['middleware'=>'admin'],function(){
 		get('/administrador','AdministradorController@index');
 		get('/logout','AdministradorController@logout');

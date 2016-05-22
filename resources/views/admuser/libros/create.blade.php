@@ -129,7 +129,7 @@
 				      			<br>
 				      		<ul class="itemsIdioma" v-for="editorial in editoriales">
 			      				<input class="with-gap" type="radio" id="test3@{{$index}}" name="id_editorial" v-model="id_editorial" value="@{{editorial.id_editorial}}" />
-					      		<label for="test3@{{$index}}">@{{editorial.nombre}}&nbsp</label>
+					      		<label for="test3@{{$index}}">@{{editorial.Nombre}}&nbsp</label>
 					      		<a v-on:click="removeEditorial(editorial)" class="remover-idioma">&#10007;</a>
 						    </ul>
 				      	</div>

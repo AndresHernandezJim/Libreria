@@ -11,6 +11,7 @@ use App\idioma;
 use App\autor;
 use App\Helpers\Filesystem;
 use App\Repositorios\RepositoryLibro;
+use App\Libro;
 
 class LibrosController extends Controller
 {
@@ -33,7 +34,9 @@ class LibrosController extends Controller
                 return back()->with('error-file', true);
             }
             $insertar=RepositoryLibro::store($request,$fileystem);
-           
+           if($insertar){
+            return back()->with('exito',true);
+           }
 
         }
         return back()->with('error-file', true);
@@ -48,7 +51,14 @@ class LibrosController extends Controller
         return autor::all();
     }
   
-    
+    public function show(){
+        $libro=\DB::table('Libro')
+            ->join('editorial', 'Libro.editorial_id_editorial', '=', 'editorial.id_editorial')
+            ->join('Idioma', 'Libro.Idioma_id_Idioma', '=', 'Idioma.id_idioma')
+            ->select('Libro.id_libro','Libro.titulo','Libro.edicion','Libro.paginas','Libro.precio','Libro.isbn','editorial.Nombre','Idioma.nombre','Libro.Imagen')
+            ->get();
+        return $libro;
+    }
       
     
      

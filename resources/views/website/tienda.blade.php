@@ -1,64 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Tienda en Linea</title>
-	<link rel="stylesheet" type="text/css" href="/css/materialize.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/app.css">
-</head>
-<body>
-	<header>
-  		<nav class="amber darken-4">
-    		<div class="nav-wrapper">
-      			<a href="/" class="brand-logo center"><i class="fa fa-book "></i>&nbsp Libreria</a>
-      			<a href="/" data-activates="mobile-demo" class="button-collapse">&nbsp &nbsp<i class="fa fa-bars"></i></a>
-      			<ul class="right hide-on-med-and-down">
-        			<li><a href="/tienda"><i class="fa fa-shopping-bag"></i> Tienda</a></li>
-        			<li><a href="/carrito"><i class="fa fa-shopping-cart"></i>&nbsp Carrito</a></li>
-        			<li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp Ingresar</a></li>
-        			<li><a href="/about"><i class="fa fa-question-circle"></i>&nbsp Acerca</a></li>
-        			<li><a href="/contacto"><i class="fa fa-envelope"></i>&nbsp Contacto</a></li>
-      			</ul>
-      			<ul class="side-nav" id="mobile-demo">
-         			<li><a href="/tienda"><i class="fa fa-shopping-bag"></i> Tienda</a></li>
-         			<li><a href="/carrito"><i class="fa fa-shopping-cart"></i>&nbsp Carrito</a></li>
-         			<li><a href="/login"><i class="fa fa-sign-in"></i>&nbsp Ingresar</a></li>
-         			<li><a href="/about"><i class="fa fa-question-circle"></i>&nbsp Acerca</a></li>
-         			<li><a href="/contacto"><i class="fa fa-envelope"></i>&nbsp Contacto</a></li>
-      			</ul>
-     		</div>
-    	</nav>   
-  </header>
+@extends('templates.website')
 
-  <footer class="page-footer amber darken-4">
-        <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text"><i class="fa fa-book fa-2x"></i>&nbsp Libreria</h5>
-                La lectura adelanta el tiempo de la vida y, paradójicamente, aleja el de la muerte. Leer es buscar otras realidades para comprender mejor esta realidad. <br><br><b>Fabricio Caivano</b>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Enlaces</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="/carrito">Carrito</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/login">Ingresar</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/about">Acerca</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/contacto">Contacto</a></li>
-                </ul>
-              </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-            © 2016 Andrés Hernández Jiménez
-            <a class="grey-text text-lighten-4 right btn-social" href="https://www.facebook.com/andreshj"><i class="fa fa-facebook-square fa-2x"></i></a>
-             <a class="grey-text text-lighten-4 right btn-social" href="https://twitter.com/Andrs10191"><i class="fa fa-twitter-square fa-2x"></i></a>
-            </div>
-        </div>
-  	</footer>
-	<script src="/js/jquery-2.2.1.min.js"></script>
-	<script src="/js/materialize.min.js"></script>
-	<script src="/js/app.js"></script>
-</body>
-</html>
+@section('content')
+<div class="center">
+    <h4><b>Libros en existencia</b></h4>
+    <br><br><br><br>
+</div>
+
+  <div class="row">
+
+      <div class="col l3" v-for='libro in libros'> 
+         <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="@{{libro.Imagen}}">
+          </div>
+          <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">@{{libro.titulo}}<i class="material-icons right"></i></span>
+              <p><a href="#">Agregar al carrito</a></p>
+          </div>
+          <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Información<i class="material-icons right">Cerrar</i></span>
+              <br><br>
+              Titulo:  @{{libro.titulo}}<br><br>
+              Edición: @{{libro.edicion}}<br><br>
+              paginas: @{{libro.paginas}}<br><br>
+              Precio:  @{{libro.precio}} <br><br>
+              ISBN:    @{{libro.isbn}}<br><br>
+              Editorial:  @{{libro.Nombre}}<br><br>
+              Idioma:  @{{libro.nombre}}<br><br>
+          </div>
+      </div>
+        
+      </div>
+     
+  </div>
+
+@stop
+@section('script')
+<script src="/js/getlibros.js"></script>
+@stop
+
