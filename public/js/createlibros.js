@@ -16,7 +16,7 @@ new Vue({
 
 		carAutor: false,
 		newAutor: "",
-		autores: [],
+		id_Autores: [],
 		listaautores:[],
 		id_idiomas:"",
 		id_editorial:"",
@@ -33,6 +33,17 @@ new Vue({
 	},	
 	//metodos
 	methods:{
+		cargaautores:function(autor,i){
+			var autor_ch=document.getElementById("test2"+i).checked;
+			console.log(autor_ch);
+			if(autor_ch){
+				this.id_Autores.push(autor);
+			}
+			else{
+				this.id_Autores.$remove(autor);
+			}
+		
+		},
 		getIdiomas: function(){
 			this.$http.get('/administrador/libros/create/idiomas').then(function(response){
 				this.$set('idiomas', response.data);

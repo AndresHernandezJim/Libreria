@@ -48,6 +48,7 @@
 		get('/administrador/Usuarios/registrar',function(){
 			return view('/admuser/Users/regusuarioad');
 		});
+		
 		get('/administrador/usuarios/usuarios',function(){return view('admuser/Users/registrados');});
 		get('/usuarios',function(){return view('admuser/Users/panelusuarios');});
 		/*insersion de libros*/

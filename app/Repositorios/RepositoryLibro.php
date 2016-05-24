@@ -4,7 +4,7 @@ use App\Libro;
 class RepositoryLibro
 {
 	static function store($request,$path) {
-		//dd($request);
+		//dd($request->all());
 		$libro=new Libro;
 		$libro->titulo=$request->titulo;
 		$libro->edicion=$request->edicion;

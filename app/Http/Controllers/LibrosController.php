@@ -12,6 +12,7 @@ use App\autor;
 use App\Helpers\Filesystem;
 use App\Repositorios\RepositoryLibro;
 use App\Libro;
+use App\AutorhasLibro;
 
 class LibrosController extends Controller
 {
@@ -23,20 +24,40 @@ class LibrosController extends Controller
       return view('/admuser/libros/create');
     }
     
-    public function store(libroRequest $request){
+    public function store(Request $request){
+      
         //verificar que exista el archivo
         $file = $request->file('image');
-         
+     
         if ($request->hasFile('image')) {
-            //mandamos subir el archivo con el upload
+            //mandamos subir el archivo con el upload     REvisar la funcion explode de php para la insersion de los autores
             $fileystem= Filesystem::upload($file);
             if(!$fileystem){
                 return back()->with('error-file', true);
             }
-            $insertar=RepositoryLibro::store($request,$fileystem);
-           if($insertar){
-            return back()->with('exito',true);
-           }
+                $insertar=RepositoryLibro::store($request,$fileystem);
+                
+                $numero="";
+                $id=\DB::table('Libro')->select('id_libro')->where('titulo',$request->titulo)->get();
+                foreach ($id as $idlibro) {
+                    $numero=$idlibro->id_libro;
+                }
+                $autores=$request->id_Autores;
+                //dd($autores);
+                $aut=explode(",",$autores);
+                for($i=0;$i<=sizeof($aut)-1;$i++){
+                    //dd($aut[$i+3]);
+                   $autorlibro=\DB::table('Autor_has_Libro')->insert([
+                    'Autor_idAutor'=>$aut[$i],
+                    'Libro_id_libro'=>$numero,
+                    ]);
+                   
+                }
+                if($insertar){
+                
+                    return back()->with('exito',true);
+                    }
+           
 
         }
         return back()->with('error-file', true);

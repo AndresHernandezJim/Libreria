@@ -31,7 +31,8 @@ class libroRequest extends Request
             'isbn'=>'required',
             'editorial_id_editorial'=>'required',
             'Idioma_id_Idioma'=>'required',
-            'image'=>'required'
+            'image'=>'required',
+           
         ];
     }
 }

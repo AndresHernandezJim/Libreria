@@ -76,6 +76,7 @@
 						<div class="col s12">
 						<input type="hidden" name="editorial_id_editorial" value="@{{id_editorial}}"></input>
 						<input type="hidden" name="Idioma_id_Idioma" value="@{{id_idiomas}}"></input>
+						<input type="hidden" name="id_Autores" value="@{{id_Autores}}">
 					
 
 							<button type="submit" class="waves-effect waves-light btn right">Registrar</button>
@@ -113,7 +114,7 @@
 						      	</center>
 				   				<br>
 				      		<ul class="itemsIdioma" v-for="autor in autores">
-			      				<input class="with-gap" type="checkbox" id="test2@{{$index}}" name="autor" />
+			      				<input class="with-gap" type="checkbox" id="test2@{{$index}}" v-on:click="cargaautores(autor.idAutor,$index)"/>
 					      		<label for="test2@{{$index}}">@{{autor.Nombre}}&nbsp</label>
 					      		<a v-on:click="removeAutor(autor)" class="remover-idioma">&#10007;</a>
 						    </ul>
