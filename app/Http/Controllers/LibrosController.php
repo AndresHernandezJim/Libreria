@@ -38,7 +38,7 @@ class LibrosController extends Controller
                 $insertar=RepositoryLibro::store($request,$fileystem);
                 
                 $numero="";
-                $id=\DB::table('Libro')->select('id_libro')->where('titulo',$request->titulo)->get();
+                $id=\DB::table('Libro')->select('id_libro')->where('titulo',$request->titulo)->fisrt();
                 foreach ($id as $idlibro) {
                     $numero=$idlibro->id_libro;
                 }
