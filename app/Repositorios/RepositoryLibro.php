@@ -18,8 +18,8 @@ class RepositoryLibro
 		/*completar todos revisa los nombres en la bd y enlos request*/
 		//dd($libro);
 		if($libro->save()){
-			return true; 
-		
+			return $libro; 
+			//return true;
 	}return false;
 	
 }}

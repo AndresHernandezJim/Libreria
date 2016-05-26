@@ -11,6 +11,7 @@ use App\idioma;
 use App\autor;
 use App\Helpers\Filesystem;
 use App\Repositorios\RepositoryLibro;
+use App\Repositorios\RepositoryAutores;
 use App\Libro;
 use App\AutorhasLibro;
 
@@ -28,6 +29,7 @@ class LibrosController extends Controller
       
         //verificar que exista el archivo
         $file = $request->file('image');
+         $aut=explode(",",$request->id_Autores);
      
         if ($request->hasFile('image')) {
             //mandamos subir el archivo con el upload     REvisar la funcion explode de php para la insersion de los autores
@@ -36,29 +38,20 @@ class LibrosController extends Controller
                 return back()->with('error-file', true);
             }
                 $insertar=RepositoryLibro::store($request,$fileystem);
-                
-                $numero="";
-                $id=\DB::table('Libro')->select('id_libro')->where('titulo',$request->titulo)->fisrt();
-                foreach ($id as $idlibro) {
-                    $numero=$idlibro->id_libro;
-                }
-                $autores=$request->id_Autores;
-                //dd($autores);
-                $aut=explode(",",$autores);
+                if(is_object($insertar)){
+                    $registroautores=RepositoryAutores::Insertarautorlibro($aut,$insertar);
+                    
+                }return back()->with('exito',true);
+                /*
+                $insertar=RepositoryLibro::store($request,$fileystem);$titulo='PHP y Mysql - Domine el desarrollo de un sitio web dinámico ';
+                $id=\DB::table('Libro')->select('id_libro')->where('titulo',$request->titulo)->first();
+                // dd($id);  //dd($autores);
+                $aut=explode(",",$request->id_Autores);//dd($aut);
                 for($i=0;$i<=sizeof($aut)-1;$i++){
-                    //dd($aut[$i+3]);
-                   $autorlibro=\DB::table('Autor_has_Libro')->insert([
-                    'Autor_idAutor'=>$aut[$i],
-                    'Libro_id_libro'=>$numero,
-                    ]);
-                   
+                    //dd($aut[$i+3]);//dd($id);
+                  $autorlibro=\DB::table('Autor_has_Libro')->insert(['Autor_idAutor'=>$aut[$i],'Libro_id_libro'=>$id,]);
                 }
-                if($insertar){
-                
-                    return back()->with('exito',true);
-                    }
-           
-
+               if($insertar){return back()->with('exito',true);}*/
         }
         return back()->with('error-file', true);
     }
