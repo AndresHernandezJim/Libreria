@@ -69,7 +69,7 @@ class LibrosController extends Controller
         $libro=\DB::table('Libro')
             ->join('editorial', 'Libro.editorial_id_editorial', '=', 'editorial.id_editorial')
             ->join('Idioma', 'Libro.Idioma_id_Idioma', '=', 'Idioma.id_idioma')
-            ->select('Libro.id_libro','Libro.titulo','Libro.edicion','Libro.paginas','Libro.precio','Libro.isbn','editorial.Nombre','Idioma.nombre','Libro.Imagen')
+            ->select('Libro.id_libro','Libro.titulo','Libro.edicion','Libro.paginas','Libro.precio','Libro.isbn','editorial.nombre as editorial','Idioma.nombre as idioma','Libro.Imagen')
             ->get();
         return $libro;
     }

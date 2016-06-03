@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Libro;
 
 class carritocontroller extends Controller
 {
@@ -35,9 +36,11 @@ class carritocontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store($id)
+    {   //retunr $id;
+        //$libro=Libro::find($id);
+        $libor=\DB::table('Libro')->where('id_Libro','=',$id)->first();
+        \Cart::add
     }
 
     /**
