@@ -25,7 +25,7 @@ class LibrosController extends Controller
       return view('/admuser/libros/create');
     }
     
-    public function store(Request $request){
+    public function store(libroRequest $request){
       
         //verificar que exista el archivo
         $file = $request->file('image');

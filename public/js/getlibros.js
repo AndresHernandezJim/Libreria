@@ -14,5 +14,9 @@ methods: {
 				this.$set('libros', response.data);
 			});
 		},
+	agregar: function($id_libro){
+		alert();
+		//this.$http.get('/detalle',{id_libro:id_libro}).then(function(response))
+	}
 },
 });

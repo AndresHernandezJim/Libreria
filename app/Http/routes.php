@@ -25,6 +25,7 @@
 	get('/otropago',function(){
 		return view('website/formaspago');
 	});
+	get('/agregar-libro/{id}','carritocontroller@store');
 	
 	//post('/form','ambientesController@store');
 	//controladores          //nombredelcontrolador@nombredelprocedim
